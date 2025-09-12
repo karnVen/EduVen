@@ -1,0 +1,27 @@
+#top-banner {
+  /* --- Core Positioning --- */
+  position: fixed; /* This is the key! It fixes the element relative to the viewport. */
+  top: 0;          /* Aligns it to the very top of the screen. */
+  left: 0;         /* Aligns it to the left. */
+  width: 100%;     /* Makes the banner span the full width of the screen. */
+  z-index: 1000;   /* Ensures the banner stays on top of all other content. */
+  
+  /* --- Styling --- */
+  background-color: #4a5568; /* A nice, neutral dark gray. */
+  color: white;              /* Sets the text color to white for contrast. */
+  text-align: center;        /* Centers the text inside the banner. */
+  padding: 10px 0;           /* Adds 10px of space above and below the text. */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth. */
+  font-size: 14px;           /* Keeps the font size unobtrusive. */
+}
+
+/* --- Optional: Style the link inside the banner --- */
+#top-banner a {
+  color: #90cdf4;           /* A light blue color that stands out. */
+  font-weight: bold;       /* Makes the link text bold. */
+  text-decoration: underline; /* Underlines the link for clarity. */
+}
+
+#top-banner a:hover {
+  text-decoration: none;   /* Removes the underline on hover for a clean effect. */
+}

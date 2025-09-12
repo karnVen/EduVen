@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive 3D Website</title>
+     <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="community.css">
+</head>
+
+<body>
+   
+ 
+
+<div class="floating-column left-column">
+    <!-- This is the box we modified -->
+
+    <div>
+    <div class="floating-box">
+        <!-- Clickable link that opens in a new tab -->
+        <a href="https://stellarium-web.org/" target="_blank" class="open-link-icon" title="Open in new tab">
+            <!-- Simple SVG for the arrow icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+        <!-- The non-interactive, scaled-down website preview -->
+        <iframe class="mini-preview-iframe" src="https://stellarium-web.org/"></iframe>
+    <h1>stellarium
+        recommeded by karnven
+    </h1></div>
+    
+    </div>
+    
+    <div class="floating-box"></div>
+    <div class="floating-box"></div>
+    <div class="floating-box"></div>
+    <div class="floating-box"></div>
+</div>
+
+<div class="floating-column right-column">
+    <div class="floating-box"></div>
+    <div class="floating-box"></div>
+    <div class="floating-box"></div>
+    <div class="floating-box"></div>
+    <div class="floating-box"></div>
+</div>
+
+<!--
+<div class="spline-container">
+    <spline-viewer url="https://prod.spline.design/IJhbvGnSwX3YsPbx/scene.splinecode"></spline-viewer>
+  
+</div>
+
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.57/build/spline-viewer.js"></script>
+-->
+</body>
+</html>
