@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Webhook Client</title>
+</head>
+<link rel="stylesheet" href="selli.css">
+<body>
+       
+    <h1> Selli(-_-)bus </h1>
+
+   
+    <form id="webhookForm">
+        <input type="text" id="inputField" placeholder="Enter text here" required> <br>
+        <button type="submit">Submit</button>
+    </form><br>
+    <div id="responseArea"></div>
+
+    <script> 
+        const sessionKey = Math.random().toString(36).substring(2, 15);
+
+        document.getElementById('webhookForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const inputValue = document.getElementById('inputField').value;
+
+            const webhookUrl = 'http://localhost:5678/webhook/627523b7-99fe-4999-88cd-7605c47db00b'  ;
+
+            const data = {
+                sessionKey: sessionKey,
+                data: inputValue
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                    return response.json();
+            })
+            .then(responseData => {
+                const responseArea = document.getElementById('responseArea');
+                    responseArea.textContent = responseData.output;
+
+                      console.log(responseData);
+               
+            });
+        });
+
+
+    </script>
+</body>
+</html>
