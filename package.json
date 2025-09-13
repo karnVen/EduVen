@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@barba/core": "^2.10.3"
+    "@barba/core": "^2.10.3",
+    "gsap": "^3.13.0"
   }
 }
