@@ -3,13 +3,164 @@
   <head>
     <meta charset="utf-8">
     <title>About — BarbaJS legacy example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="community2.css">
+    <link rel="stylesheet" href="home.css">
   </head>
   <body>
     <div data-barba="wrapper">
       <div data-barba="container" data-barba-namespace="about">
-        <h1>About</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <a href="index.html">Go back home</a>
+        <header>
+             
+            <nav style="margin-left: 32.5%; margin-top: 2.5%;">
+                 <a href="bar.html">HOME</a>
+                <a href="bar2.html">COMMUNITY</a>
+               
+                <a href="#">RESOURCES</a>
+                <a href="#">DOCS</a>
+            </nav>
+            
+        </header><br>
+        <div style="margin-left: 50%;">Recommed</div>
+
+   
+ 
+
+        <!-- Left column with floating boxes -->
+        <div class="floating-column left-column">
+        
+            <!-- This is the box we modified -->
+            <div class="floating-box">
+                <!-- Clickable link that opens in a new tab -->
+                <a href="https://stellarium-web.org/" target="_blank" class="open-link-icon" title="Open in new tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+
+                <!-- The non-interactive, scaled-down website preview -->
+                <iframe class="mini-preview-iframe" src="https://stellarium-web.org/" loading="lazy"></iframe>
+                
+                <!-- NEW: The text overlay element -->
+                <div class="box-text-overlay">
+                    <h3 class="site-name">Stellarium</h3>
+                    <p class="recommended-by">recommended by karnven</p>
+                </div>
+            </div>
+            
+            <div class="floating-box">
+                <!-- Clickable link that opens in a new tab -->
+                <a href="https://ptable.com/#Properties" target="_blank" class="open-link-icon" title="Open in new tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+
+                <!-- The non-interactive, scaled-down website preview -->
+                <iframe class="mini-preview-iframe" src="https://ptable.com/#Properties" loading="lazy"></iframe>
+                
+                <!-- NEW: The text overlay element -->
+                <div class="box-text-overlay">
+                    <h3 class="site-name">Ptable.com</h3>
+                    <p class="recommended-by">recommended by karnven</p>
+                </div>
+            </div>
+
+             <div class="floating-box">
+                <!-- Clickable link that opens in a new tab -->
+                <a href="https://explore.org/livecams" target="_blank" class="open-link-icon" title="Open in new tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+
+                <!-- The non-interactive, scaled-down website preview -->
+                <iframe class="mini-preview-iframe" src="https://explore.org/livecams" loading="lazy"></iframe>
+                
+                <!-- NEW: The text overlay element -->
+                <div class="box-text-overlay">
+                    <h3 class="site-name">Explore.org</h3>
+                    <p class="recommended-by">recommended by karnven</p>
+                </div>
+            </div>
+            <div class="floating-box"></div>
+            <div class="floating-box"></div>
+        </div>
+
+<div class="floating-column right-column">
+     <!-- Clickable link that opens in a new tab -->
+   
+            <!-- This is the box we modified -->
+            <div class="floating-box">
+                <!-- Clickable link that opens in a new tab -->
+                <a href="https://stellarium-web.org/" target="_blank" class="open-link-icon" title="Open in new tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+
+                <!-- The non-interactive, scaled-down website preview -->
+                <iframe class="mini-preview-iframe" src="https://stellarium-web.org/" loading="lazy"></iframe>
+                
+                <!-- NEW: The text overlay element -->
+                <div class="box-text-overlay">
+                    <h3 class="site-name">Stellarium</h3>
+                    <p class="recommended-by">recommended by karnven</p>
+                </div>
+            </div>
+            
+            <div class="floating-box">
+                <!-- Clickable link that opens in a new tab -->
+                <a href="https://ptable.com/#Properties" target="_blank" class="open-link-icon" title="Open in new tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+
+                <!-- The non-interactive, scaled-down website preview -->
+                <iframe class="mini-preview-iframe" src="https://ptable.com/#Properties" loading="lazy"></iframe>
+                
+                <!-- NEW: The text overlay element -->
+                <div class="box-text-overlay">
+                    <h3 class="site-name">Ptable.com</h3>
+                    <p class="recommended-by">recommended by karnven</p>
+                </div>
+            </div>
+
+             <div class="floating-box">
+                <!-- Clickable link that opens in a new tab -->
+                <a href="https://explore.org/livecams" target="_blank" class="open-link-icon" title="Open in new tab">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+
+                <!-- The non-interactive, scaled-down website preview -->
+                <iframe class="mini-preview-iframe" src="https://explore.org/livecams" loading="lazy"></iframe>
+                
+                <!-- NEW: The text overlay element -->
+                <div class="box-text-overlay">
+                    <h3 class="site-name">Explore.org</h3>
+                    <p class="recommended-by">recommended by karnven</p>
+                </div>
+            </div>
+            <div class="floating-box"></div>
+            <div class="floating-box"></div>
+        </div>
+
+
+
+<div class="spline-container">
+    <spline-viewer url="https://prod.spline.design/IJhbvGnSwX3YsPbx/scene.splinecode"></spline-viewer>
+  
+</div>
+
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.57/build/spline-viewer.js"></script>
+
       </div>
     </div>
 
