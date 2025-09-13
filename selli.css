@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1e1e1e;
+    color: #e0e0e0; /* ADDED: Sets a light default text color for the whole page */
+}
+
+/* Common styles for both form and response area */
+#webhookForm, #responseArea {
+    background-color: #2b2b2b; /* MODIFIED: Slightly adjusted color for better contrast */
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* MODIFIED: Enhanced shadow for dark theme */
+    text-align: center;
+    border: 1px solid #444; /* ADDED: Subtle border to define the elements */
+}
+
+/* Specific style for the response area */
+#responseArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"] {
+    width: 500px;
+    padding: 12px; /* MODIFIED: Increased padding for a modern look */
+    margin-bottom: 20px; /* MODIFIED: Increased margin */
+    border: 1px solid #555; /* MODIFIED: Darker border for input fields */
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #333; /* ADDED: Dark background for the input */
+    color: #e0e0e0; /* ADDED: Light text color for typing */
+    font-size: 16px; /* ADDED: Better readability */
+}
+
+/* ADDED: Style for when the input field is focused (clicked on) */
+input[type="text"]:focus {
+    outline: none; /* Removes the default browser outline */
+    border-color: #007bff; /* Highlights the input with the button color */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adds a soft glow effect */
+}
+
+/* ADDED: Style for the placeholder text */
+::placeholder {
+  color: #888;
+  opacity: 1; /* Firefox */
+}
+
+button {
+    width: 100%;
+    padding: 12px; /* MODIFIED: Increased padding */
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold; /* ADDED: Makes button text stand out */
+    transition: background-color 0.2s ease; /* ADDED: Smooth transition for hover effect
+    just for stike
+    nother one 
+    another one
+    1 sep
+    dfjdkfdjfodfjoidjfo*/
+}
+
+button:hover {
+    background-color: #0056b3;
+}

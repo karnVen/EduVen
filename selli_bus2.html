@@ -6,41 +6,26 @@
     <title>Minimal Webhook Client</title>
 </head>
 <link rel="stylesheet" href="selli.css">
+
+<link rel="stylesheet" href="home.css">
 <body>
-       
+        <header>
+      <nav style="">
+        <a href="home.html">HOME</a>
+        <a href="community.html">COMMUNITY</a>
+        <a href="selli_bus2.html">NCERT</a>
+        <a href="#">DOCS</a>
+      </nav>
+    </header><br>
+
     <h1> Selli(-_-)bus </h1>
 
    
     <form id="webhookForm">
-         
-            <label for="class">Class</label>
-            <input type="text" name="class" id="class" placeholder="e.g., Computer Science 101" required>
-       
-
-        <!-- Topic Field -->
-       
-            <label for="topic">Topic</label>
-            <input type="text" name="topic" id="topic" placeholder="e.g., Data Structures" required>
-        
-        
-        <!-- Description Field -->
-       
-            <label for="description">Description</label>
-            <input type="text" name="description" id="description" placeholder="A brief summary" required>
-        
-
-        <!-- Code Textarea -->
-        
-            <label for="code">Code</label>
-            <textarea id="code" name="code" rows="8" placeholder="Paste your code here..."></textarea>
-        
-
-        <!-- Submit Button -->
-        
-            <button type="submit">Submit</button>
-        
+        <input type="text" id="inputField" placeholder="Enter text here" required> <br>
+        <button type="submit">Submit</button>
     </form><br>
-    
+    <div id="responseArea"></div>
 
     <script> 
         const sessionKey = Math.random().toString(36).substring(2, 15);
