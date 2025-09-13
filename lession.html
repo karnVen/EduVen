@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Form Example</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom transition for the modal */
+        .modal-hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(-20px) scale(0.95);
+        }
+        .modal-visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .modal {
+            /* Smoother, slightly springy transition */
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 font-sans flex items-center justify-center min-h-screen">
+
+    <!-- Button to open the modal -->
+    <button id="openModalBtn" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300">
+        Submit Your Code
+    </button>
+
+    <!-- The Modal -->
+    <div id="codeModal" class="modal modal-hidden fixed inset-0 bg-black bg-opacity-70 items-start justify-center p-4 pt-20">
+        <!-- Modal Content -->
+        <div class="bg-gray-800 border border-gray-700 rounded-xl shadow-2xl shadow-blue-500/20 w-full max-w-2xl transform transition-all" onclick="event.stopPropagation()">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-700 rounded-t-xl">
+                <h3 class="text-2xl font-semibold text-gray-100">
+                    Code Submission Form
+                </h3>
+                <button id="closeModalBtn" class="text-gray-400 bg-transparent hover:bg-gray-600 hover:text-white rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            
+            <!-- Modal Body (The Form) -->
+            <form id="submissionForm" action="https://httpbin.org/post" method="POST" target="_blank" class="p-6 md:p-8 space-y-6">
+                <!-- Class and Topic Fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="class" class="block mb-2 text-sm font-medium text-gray-300">Class</label>
+                        <input type="text" name="class" id="class" class="bg-gray-700 border border-gray-600 text-gray-100 placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="e.g., Computer Science 101" required>
+                    </div>
+                    <div>
+                        <label for="topic" class="block mb-2 text-sm font-medium text-gray-300">Topic</label>
+                        <input type="text" name="topic" id="topic" class="bg-gray-700 border border-gray-600 text-gray-100 placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="e.g., Data Structures" required>
+                    </div>
+                </div>
+                
+                <!-- Description Field -->
+                <div>
+                    <label for="description" class="block mb-2 text-sm font-medium text-gray-300">Description</label>
+                    <input type="text" name="description" id="description" class="bg-gray-700 border border-gray-600 text-gray-100 placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="A brief summary" required>
+                </div>
+
+                <!-- Code Textarea -->
+                <div>
+                    <label for="code" class="block mb-2 text-sm font-medium text-gray-300">Code</label>
+                    <textarea id="code" name="code" rows="8" class="bg-gray-900 border border-gray-600 text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 font-mono" placeholder="Paste your code here..."></textarea>
+                </div>
+
+                <!-- Modal Footer (Submit Button) -->
+                <div class="flex items-center pt-4 border-t border-gray-700 rounded-b">
+                    <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Get all the necessary elements from the DOM
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const codeModal = document.getElementById('codeModal');
+        const submissionForm = document.getElementById('submissionForm');
+
+        // Function to open the modal
+        const openModal = () => {
+            codeModal.classList.remove('modal-hidden');
+            codeModal.classList.add('modal-visible');
+        };
+
+        // Function to close the modal
+        const closeModal = () => {
+            codeModal.classList.add('modal-hidden');
+            codeModal.classList.remove('modal-visible');
+        };
+
+        // Event listeners to open and close the modal
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close the modal if the user clicks on the background overlay
+        codeModal.addEventListener('click', (event) => {
+            // Check if the click is on the modal background itself
+            if (event.target === codeModal) {
+                closeModal();
+            }
+        });
+
+        // Handle the form submission
+        submissionForm.addEventListener('submit', (event) => {
+            // Prevent the default form submission to handle it with JavaScript
+            event.preventDefault(); 
+            
+            // Close the modal so the user sees the main page again
+            closeModal();
+            
+            // Programmatically submit the form. The data will be sent to the URL 
+            // in the 'action' attribute in a new tab (due to target="_blank").
+            submissionForm.submit();
+
+            // Reset the form fields for the next time the user opens the modal.
+            // This runs after the submission process has been initiated.
+            submissionForm.reset();
+        });
+    </script>
+
+</body>
+</html>
+

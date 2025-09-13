@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Webhook Client</title>
+</head>
+<link rel="stylesheet" href="selli.css">
+<body>
+       
+    <h1> Selli(-_-)bus </h1>
+
+   
+    <form id="webhookForm">
+         
+            <label for="class">Class</label>
+            <input type="text" name="class" id="class" placeholder="e.g., Computer Science 101" required>
+       
+
+        <!-- Topic Field -->
+       
+            <label for="topic">Topic</label>
+            <input type="text" name="topic" id="topic" placeholder="e.g., Data Structures" required>
+        
+        
+        <!-- Description Field -->
+       
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" placeholder="A brief summary" required>
+        
+
+        <!-- Code Textarea -->
+        
+            <label for="code">Code</label>
+            <textarea id="code" name="code" rows="8" placeholder="Paste your code here..."></textarea>
+        
+
+        <!-- Submit Button -->
+        
+            <button type="submit">Submit</button>
+        
+    </form><br>
+    
+
+    <script> 
+        const sessionKey = Math.random().toString(36).substring(2, 15);
+
+        document.getElementById('webhookForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const inputValue = document.getElementById('inputField').value;
+
+            const webhookUrl = 'http://localhost:5678/webhook/520ebc9d-b14b-40a7-8645-17c494165dab';
+
+            const data = {
+                sessionKey: sessionKey,
+                data: inputValue
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                    return response.json();
+            })
+            .then(responseData => {
+                const responseArea = document.getElementById('responseArea');
+                    responseArea.textContent = responseData.output;
+
+                      console.log(responseData);
+               
+            });
+        });
+
+
+         const hexColors = [
+            "#FF5733", "#33FF57", "#3357FF", "#F1C40F", "#8E44AD",
+            "#1ABC9C", "#E74C3C", "#2ECC71", "#3498DB", "#9B59B6",
+            "#34495E", "#16A085", "#27AE60", "#2980B9", "#D35400",
+            "#C0392B", "#BDC3C7", "#7F8C8D", "#FF6F61", "#6B5B95",
+            "#88B04B", "#F7CAC9", "#92A8D1", "#955251", "#B565A7"
+        ];
+function changeBackgroundColor() {
+
+            const idx = Math.floor(Math.random() * hexColors.length);
+            
+            document.body.style.backgroundColor = hexColors[idx];
+        }
+        function changetextColor() {
+
+            const idx = Math.floor(Math.random() * hexColors.length);
+            const line=document.querySelector('h1');
+            
+            line.style.color = hexColors[idx];
+        }
+        
+        setInterval(() => {
+          
+           // changeBackgroundColor();
+            changetextColor();
+        }, 1000);
+      
+    </script>
+</body>
+</html>

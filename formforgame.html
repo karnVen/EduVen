@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Form</title>
+    <style>
+        /* Basic styles for the body */
+        body {
+            background-color: #1f2937; /* Equivalent to bg-gray-800 */
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Form container styling */
+        form {
+            padding: 2rem; /* Equivalent to p-8 */
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* Equivalent to space-y-6 */
+        }
+
+        /* Styling for each form field group */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            margin-bottom: 0.5rem; /* Equivalent to mb-2 */
+            font-size: 0.875rem; /* Equivalent to text-sm */
+            font-weight: 500; /* Equivalent to font-medium */
+            color: #d1d5db; /* Equivalent to text-gray-300 */
+        }
+
+        /* General styling for input and textarea fields */
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 0.625rem; /* Equivalent to p-2.5 */
+            background-color: #374151; /* Equivalent to bg-gray-700 */
+            border: 1px solid #4b5563; /* Equivalent to border-gray-600 */
+            color: #f3f4f6; /* Equivalent to text-gray-100 */
+            font-size: 0.875rem; /* Equivalent to text-sm */
+            border-radius: 0.5rem; /* Equivalent to rounded-lg */
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+        
+        /* Special background for the code area */
+        textarea {
+            background-color: #111827; /* bg-gray-900 */
+            font-family: monospace;
+        }
+
+        /* Focus styles for inputs and textareas */
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6; /* focus:border-blue-500 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus:ring-blue-500 */
+        }
+
+        /* Placeholder text color */
+        ::placeholder {
+            color: #9ca3af; /* placeholder-gray-400 */
+        }
+
+        /* Submit button container */
+        .submit-container {
+            padding-top: 1rem;
+            border-top: 1px solid #374151; /* border-gray-700 */
+        }
+
+        /* Submit button styling */
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.625rem 1.25rem; /* px-5 py-2.5 */
+            background-color: #2563eb; /* bg-blue-600 */
+            color: white;
+            font-weight: 500; /* font-medium */
+            font-size: 0.875rem; /* text-sm */
+            border: none;
+            border-radius: 0.5rem; /* rounded-lg */
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        /* Submit button hover effect */
+        button[type="submit"]:hover {
+            background-color: #1d4ed8; /* hover:bg-blue-700 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The Form -->
+    <!-- When submitted, it will open the result in a new tab (_blank) -->
+    <form id="webhookForm">
+        <!-- Class Field -->
+        <div class="form-group">
+            <label for="class">Class</label>
+            <input type="text" name="class" id="class" placeholder="e.g., Computer Science 101" required>
+        </div>
+
+        <!-- Topic Field -->
+        <div class="form-group">
+            <label for="topic">Topic</label>
+            <input type="text" name="topic" id="topic" placeholder="e.g., Data Structures" required>
+        </div>
+        
+        <!-- Description Field -->
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" placeholder="A brief summary" required>
+        </div>
+
+        <!-- Code Textarea -->
+        <div class="form-group">
+            <label for="code">Code</label>
+            <textarea id="code" name="code" rows="8" placeholder="Paste your code here..."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="submit-container">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+
+    <script> 
+      
+document.getElementById('webhookForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Collect all form values
+    const classValue = document.getElementById('class').value;
+    const topicValue = document.getElementById('topic').value;
+    const descriptionValue = document.getElementById('description').value;
+    const codeValue = document.getElementById('code').value;
+
+    const webhookUrl = 'http://localhost:5678/webhook-test/8b5798bc-4696-40c4-99ac-71e9451e496b';
+
+    // Prepare data object with all fields
+    const data = {
+        class: classValue,
+        topic: topicValue,
+        description: descriptionValue,
+        code: codeValue
+    };
+
+    fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        // Ensure there is an element with id 'responseArea' in your HTML to show response
+        let responseArea = document.getElementById('responseArea');
+        if (!responseArea) {
+            responseArea = document.createElement('pre');
+            responseArea.id = 'responseArea';
+            document.body.appendChild(responseArea);
+        }
+        responseArea.textContent = JSON.stringify(responseData, null, 2);
+
+        console.log(responseData);
+    })
+    .catch(err => console.error('Error:', err));
+});
+
+    </script>
+    
+</body>
+</html>
+

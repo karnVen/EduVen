@@ -93,11 +93,6 @@
             animation-delay: -2s;
         }
 
-        @keyframes floatAnimation {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
 
         /* --- STYLES FOR SCALED IFRAME AND LINK --- */
         .mini-preview-iframe {
