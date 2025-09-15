@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #D2D2D2;
+            background-image:
+            repeating-linear-gradient(
+                to right, transparent 0 100px,
+                #25283b22 100px 101px
+            ),
+            repeating-linear-gradient(
+                to bottom, transparent 0 100px,
+                #25283b22 100px 101px
+            );
+        }
+        
+        body::before{
+            position: absolute;
+            width: min(1400px, 90vw);
+            top: 10%;
+            left: 50%;
+            height: 90%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url();
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+    </style>
+    <link rel="stylesheet" href="yt.css">
+</head>
+<body>
+
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"> <a href="https://explore.org/livecams" target="_blank" class="open-link-icon" title="Open in new tab">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+    </a>
+
+    <img class="mini-preview-image" src="Explore.png" alt="Preview of the Stellarium website">
+
+    <div class="box-text-overlay">
+        <h3 class="site-name">Explore.org</h3>
+        <p class="recommended-by">recommended by karnven</p>
+    </div></div>
+            <div class="item" style="--position: 2"><img src="ptable.png" alt=""></div>
+            <div class="item" style="--position: 3"><img src="stellarium.png" alt=""></div>
+            <div class="item" style="--position: 4"><img src="images/dragon_4.jpg" alt=""></div>
+            <div class="item" style="--position: 5"><img src="images/dragon_5.jpg" alt=""></div>
+            <div class="item" style="--position: 6"><img src="images/dragon_6.jpg" alt=""></div>
+            <div class="item" style="--position: 7"><img src="images/dragon_7.jpg" alt=""></div>
+            <div class="item" style="--position: 8"><img src="images/dragon_8.jpg" alt=""></div>
+            <div class="item" style="--position: 9"><img src="images/dragon_9.jpg" alt=""></div>
+            <div class="item" style="--position: 10"><img src="images/dragon_10.jpg" alt=""></div>
+        </div>
+        //
+<spline-viewer url="https://prod.spline.design/IJhbvGnSwX3YsPbx/scene.splinecode"></spline-viewer>
+    </div>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.57/build/spline-viewer.js"></script>
+    
+</body>
+</html>

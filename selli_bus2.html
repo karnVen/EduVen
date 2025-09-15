@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Minimalistic Chat Interface</title>
+<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="nav.css">
 <style>
   /* Reset */
   * {
@@ -151,7 +153,7 @@
 </head>
 <body>
 
-<header>
+<header style="margin-left: 40%;">
   <nav>
     <a href="home.html">HOME</a>
     <a href="community.html">COMMUNITY</a>
@@ -160,7 +162,7 @@
   </nav>
 </header>
 
-<div id="chatContainer">
+<div style="margin-right:50%;" id="chatContainer">
   <div id="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
   <form id="inputForm" aria-label="Send a message">
     <input
@@ -173,7 +175,15 @@
     />
     <button type="submit" id="sendButton" aria-label="Send message">Send</button>
   </form>
+
+  
+   <spline-viewer class="robot-3d" style="padding-left: 20% ;" url="https://prod.spline.design/w-uWdAP7sdLSmknH/scene.splinecode"></spline-viewer>
+    
+   
 </div>
+
+ </div>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.57/build/spline-viewer.js"></script>
 
 <script>
   const messages = document.getElementById('messages');

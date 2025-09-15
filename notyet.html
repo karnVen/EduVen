@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minimal Webhook Client</title>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Minimal Webhook Client</title>
 </head>
 <link rel="stylesheet" href="you.css" />
 <body>
@@ -16,55 +16,55 @@
         <a href="notyet.html">Game</a>
       </nav>
     </header>
-    
 
-    <form id="webhookForm">
-        <input type="text" id="inputField" placeholder="Enter text here" required />
-        <br />
-        <button type="submit">Submit</button>
-    </form>
-    <br />
-    <div id="responseArea"></div>
 
-    <script>
-        const sessionKey = Math.random().toString(36).substring(2, 15);
+ <form id="webhookForm">
+ <input type="text" id="inputField" placeholder="Enter text here" required />
+ <br />
+ <button type="submit">Submit</button>
+ </form>
+ <br />
+ <div id="responseArea"></div>
 
-        document.getElementById("webhookForm").addEventListener("submit", function (event) {
-            event.preventDefault();
+ <script>
+ const sessionKey = Math.random().toString(36).substring(2, 15);
 
-            const inputValue = document.getElementById("inputField").value;
+ document.getElementById("webhookForm").addEventListener("submit", function (event) {
+ event.preventDefault();
 
-            const webhookUrl = "http://localhost:5678/webhook/627523b7-99fe-4999-88cd-7605c47db00b";
+ const inputValue = document.getElementById("inputField").value;
 
-            const data = {
-                sessionKey: sessionKey,
-                data: inputValue,
-            };
+ const webhookUrl = "http://localhost:5678/webhook/627523b7-99fe-4999-88cd-7605c47db00b";
 
-            fetch(webhookUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            })
-                .then((response) => response.json())
-                .then((responseData) => {
-                    const blob = new Blob([responseData.output], { type: "text/html" });
-                    const url = URL.createObjectURL(blob);
-                    // Replace current page with fetched HTML
-                    window.location.href = url;
+ const data = {
+ sessionKey: sessionKey,
+ data: inputValue,
+ };
 
-                    // Optional: Show message if navigation fails (usually won't reach here)
-                    const responseArea = document.getElementById("responseArea");
-                    responseArea.textContent = "Loading fetched HTML...";
-                })
-                .catch((error) => {
-                    console.error("Error fetching webhook:", error);
-                    const responseArea = document.getElementById("responseArea");
-                    responseArea.textContent = "Failed to fetch the page. See console for details.";
-                });
-        });
-    </script>
+      fetch(webhookUrl, {
+ method: "POST",
+ headers: {
+  "Content-Type": "application/json",
+ },
+ body: JSON.stringify(data),
+ })
+ .then((response) => response.json())
+ .then((responseData) => {
+  const blob = new Blob([responseData.output], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  // Replace current page with fetched HTML
+  window.location.href = url;
+
+  // Optional: Show message if navigation fails (usually won't reach here)
+  const responseArea = document.getElementById("responseArea");
+  responseArea.textContent = "Loading fetched HTML...";
+ })
+ .catch((error) => {
+  console.error("Error fetching webhook:", error);
+  const responseArea = document.getElementById("responseArea");
+  responseArea.textContent = "Failed to fetch the page. See console for details.";
+ });
+ });
+ </script>
 </body>
 </html>

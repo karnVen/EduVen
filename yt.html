@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Image Slider</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.slider{
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+
+}
+@keyframes autoRun{
+    from{
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    to{
+        transform: perspective(1000px)  rotateY(360deg);
+    }
+}
+.slider .item{
+    position: absolute;
+    inset: 0;
+    transform:
+        rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(550px);
+}
+.slider .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 50px;
+    z-index: 1;
+}
+.content h1{
+    font-family: 'IM Fell English SC', serif;
+    font-size: 16em;
+    color: #fff;
+    position: relative;
+}
+.content h1::after{
+    position: absolute;
+    inset: 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #fff;
+    color: transparent;
+
+}
+.content .author{
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+    max-width: 200px;
+    color: #eee;
+}
+.content .author h2{
+    font-size: 2em;
+    color: #fff;
+}
+.model{
+    background-image: url(model.png);
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"><img src="ptable.png" alt=""></div>
+            <div class="item" style="--position: 2"><img src="stellarium.png" alt=""></div>
+            <div class="item" style="--position: 3"><img src="Explore.png" alt=""></div>
+            <div class="item" style="--position: 4"><img src="ptable.png" alt=""></div>
+            <div class="item" style="--position: 5"><img src="stellarium.png" alt=""></div>
+            <div class="item" style="--position: 6"><img src="Explore.png" alt=""></div>
+            <div class="item" style="--position: 7"><img src="ptable.png" alt=""></div>
+            <div class="item" style="--position: 8"><img src="stellarium.png" alt=""></div>
+            <div class="item" style="--position: 9"><img src="Explore.png" alt=""></div>
+            <div class="item" style="--position: 10"><img src="ptable.png" alt=""></div>
+        </div>
+
+
+       
+</body>
+</html>
