@@ -1,0 +1,173 @@
+  html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling on the body */
+            background-color: #08001a; /* Dark space-themed fallback */
+            font-family: 'Orbitron', sans-serif; /* Apply the cool font */
+        }
+
+        .spline-container {
+            position: relative;
+            width: 100vw;  /* full viewport width */
+            height: 100vh; /* full viewport height */
+            overflow: hidden; /* Prevent overflow inside container */
+        }
+        
+        /* This is where a 3D background would go. Using a gradient as a placeholder. */
+        .background-placeholder {
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at top right, #4a00e0, #8e2de2, #1f003b);
+        }
+
+        .overlay-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2.5rem); /* Responsive font size */
+            user-select: none;
+            z-index: 100;
+        }
+
+        .overlay-content > * {
+            max-width: 600px;
+            text-shadow: 0 0 15px rgba(0,0,0,0.7);
+        }
+
+        .floating-column {
+            position: absolute;
+            top: 0;
+            height: 100vh;
+            width: 20%;
+            min-width: 220px; /* Ensure boxes don't get too crushed */
+            overflow-y: scroll;
+            z-index: 10;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .floating-column::-webkit-scrollbar {
+            display: none;
+        }
+
+        .left-column {
+            left: 2%; 
+        }
+
+        .right-column {
+            right: 2%;
+        }
+        
+        .floating-box {
+            width: 200px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            margin: 3rem auto;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: floatAnimation 7s ease-in-out infinite;
+            position: relative;
+            overflow: hidden; /* This will clip the scaled iframe and text overlay */
+        }
+
+        .floating-column .floating-box:nth-child(2n) {
+            animation-delay: -3.5s;
+            background-color: rgba(138, 43, 226, 0.15); /* BlueViolet */
+        }
+        .floating-column .floating-box:nth-child(3n) {
+            background-color: rgba(0, 191, 255, 0.15); /* DeepSkyBlue */
+        }
+        .floating-column .floating-box:nth-child(4n) {
+            animation-delay: -2s;
+        }
+
+
+        /* --- STYLES FOR SCALED IFRAME AND LINK --- */
+        .mini-preview-iframe {
+            /* Sized to a common 16:9 aspect ratio */
+            width: 1280px;
+            height: 720px;
+            border: none;
+            
+            /* The scaling magic! Shrinks the large iframe to fit the small box */
+            /* Calculation: 200px (box width) / 1280px (iframe width) ≈ 0.156 */
+            transform: scale(0.156); 
+            transform-origin: 0 0; /* Scales from the top-left corner */
+            
+            /* This makes the iframe non-interactive (no clicks, no scroll) */
+            pointer-events: none; 
+        }
+
+        .open-link-icon {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            z-index: 2; /* Place it on top of everything */
+            cursor: pointer;
+            pointer-events: auto; /* IMPORTANT: Makes the link clickable */
+            
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .open-link-icon:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+        }
+        
+        .open-link-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: white;
+            stroke-width: 2px;
+        }
+
+        /* --- NEW: Text Overlay for the Website Name --- */
+        .box-text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 10px 8px 10px;
+            box-sizing: border-box;
+            z-index: 1; /* Above iframe, below link icon */
+            color: white;
+            text-align: center;
+            /* Gradient ensures text is readable against any website background */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+            pointer-events: none; /* Make text non-interactive */
+        }
+        
+        .box-text-overlay .site-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 0 5px black;
+        }
+
+        .box-text-overlay .recommended-by {
+            font-size: 0.6rem;
+            font-weight: 400;
+            margin: 2px 0 0 0;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
