@@ -1,30 +1,21 @@
-
 header {
     display: flex;
-    justify-content: space-between;
+    /* This is the key change to center the nav element */
+    justify-content: center;
     align-items: center;
     padding: 1rem 5rem;
-
-}
-
-header h1 {
-    margin: 0;
-    font-size: 3rem;
-    font-weight: 300;
-
 }
 
 nav {
     display: flex;
-    align-self: center;
-    gap: 3rem;
-    margin-left: -5%;
-
+    align-items: center; /* Changed from align-self for consistency */
+    gap: 3rem; /* This properly spaces out your links */
+    /* margin-left: -5%;  <-- This is no longer needed */
 }
 
-
 nav a {
-    font: size 1rem;
+    /* Corrected typo from "font: size" to "font-size" */
+    font-size: 1rem;
     letter-spacing: 0.1rem;
     text-decoration: none;
     transition: color 0.2s ease;
