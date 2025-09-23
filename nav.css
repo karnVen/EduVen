@@ -1,0 +1,37 @@
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5rem;
+
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 300;
+
+}
+
+nav {
+    display: flex;
+    align-self: center;
+    gap: 3rem;
+    margin-left: -5%;
+
+}
+
+
+nav a {
+    font: size 1rem;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    color: inherit;
+    z-index: 999;
+}
+
+nav a:hover {
+    color: #a7a7a7;
+}

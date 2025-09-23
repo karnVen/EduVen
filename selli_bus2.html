@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Minimalistic Chat Interface</title>
+<link rel="stylesheet" href="home2.css">
+<link rel="stylesheet" href="nav.css">
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: black;
+    color: #ddd;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  header {
+    background: black;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+  }
+  nav {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+  nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+  nav a:hover {
+    color: #aaa;
+  }
+
+  #chatContainer {
+    margin-top: 60px; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background: black;
+    border-radius: 8px 8px 0 0;
+    height: calc(100vh - 60px);
+    box-shadow: 0 0 10px black;
+    overflow: hidden;
+  }
+
+  #messages {
+    flex-grow: 1;
+    padding: 1rem 1.5rem;
+    overflow-y: auto;
+  }
+  .message {
+    max-width: 70%;
+    padding: 0.6rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+    clear: both;
+    word-wrap: break-word;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .user {
+    background-color:#2a2a2a;
+    color: #eee;
+    float: right;
+    text-align: right;
+  }
+  .bot {
+    background-color: #2a2a2a;
+    color: #ccc;
+    float: left;
+    text-align: left;
+  }
+
+  #inputForm {
+    display: flex;
+    padding: 0.8rem 1.5rem;
+    background: black;
+    border-radius: 0 0 8px 8px;
+    border-top: 1px solid #333;
+  }
+  #inputField {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: #eee;
+    transition: background-color 0.2s ease;
+  }
+  #inputField::placeholder {
+    color: #777;
+  }
+  #inputField:focus {
+    outline: none;
+    background-color: #444;
+  }
+  #sendButton {
+    margin-left: 0.5rem;
+    background-color: #555;
+    color: #eee;
+    border: none;
+    border-radius: 20px;
+    padding: 0 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  #sendButton:hover {
+    background-color: #777;
+  }
+  #sendButton:disabled {
+    cursor: not-allowed;
+    background-color: #444;
+    color: #999;
+  }
+
+  /* Scrollbar */
+  #messages::-webkit-scrollbar {
+    width: 6px;
+  }
+  #messages::-webkit-scrollbar-track {
+    background: #1e1e1e;
+  }
+  #messages::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
+  }
+
+  body {
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<header style="margin-left: 40%;">
+  <nav>
+    <a href="home2.html">HOME</a>
+    <a href="community2.html">COMMUNITY</a>
+    <a href="selli_bus2.html">NCERT</a>
+    <a href="notyet.html">GAMES</a>
+  </nav>
+</header>
+
+<div style="margin-right:50%;" id="chatContainer">
+  <div id="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+  <form id="inputForm" aria-label="Send a message">
+    <input
+      type="text"
+      id="inputField"
+      placeholder="Type your message here..."
+      autocomplete="off"
+      required
+      aria-required="true"
+    />
+    <button type="submit" id="sendButton" aria-label="Send message">Send</button>
+  </form>
+
+  
+   <spline-viewer class="robot-3d" style="padding-left: 20% ;" url="https://prod.spline.design/w-uWdAP7sdLSmknH/scene.splinecode"></spline-viewer>
+    
+   
+</div>
+
+ </div>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.57/build/spline-viewer.js"></script>
+
+<script>
+  const messages = document.getElementById('messages');
+  const inputForm = document.getElementById('inputForm');
+  const inputField = document.getElementById('inputField');
+  const sendButton = document.getElementById('sendButton');
+  const sessionKey = Math.random().toString(36).substring(2, 15);
+
+  function addMessage(content, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message ' + sender;
+    messageDiv.textContent = content;
+    messages.appendChild(messageDiv);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  inputForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    const text = inputField.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    inputField.value = '';
+    inputField.disabled = true;
+    sendButton.disabled = true;
+
+    const webhookUrl = 'http://localhost:5678/webhook/520ebc9d-b14b-40a7-8645-17c494165dab';
+    const data = { sessionKey, data: text };
+
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((responseData) => {
+        addMessage(responseData.output || 'No response', 'bot');
+      })
+      .catch((err) => {
+        addMessage('Error: ' + err.message, 'bot');
+      })
+      .finally(() => {
+        inputField.disabled = false;
+        sendButton.disabled = false;
+        inputField.focus();
+      });
+  });
+
+  inputField.focus();
+</script>
+
+</body>
+</html>
