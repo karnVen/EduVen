@@ -3,7 +3,7 @@
             padding: 0;
             height: 100%;
             overflow: hidden; /* Prevent scrolling on the body */
-            background-color: #08001a; /* Dark space-themed fallback */
+            background-color: #000000; /* Dark space-themed fallback */
             font-family: 'Orbitron', sans-serif; /* Apply the cool font */
         }
 
