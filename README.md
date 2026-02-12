@@ -73,6 +73,6 @@ Contributions are welcome! If you have a cool idea to make EduVen even better:
 
 ## 👤 Author
 
-**Karan Singh**
+**karnVen**
 - 🐙 GitHub: [@karnVen](https://github.com/karnVen)
 
