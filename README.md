@@ -1,6 +1,8 @@
 # 🎓 EduVen
 > **The Next-Gen Education Platform** 🚀  
 > *Learning meets 3D visuals, AI automation, and Gaming.*
+>
+[![Live Demo](https://img.shields.io/badge/View_Live_Demo-181717?style=for-the-badge&logo=github&logoColor=white)](https://karnven.github.io/EduVen/Edu/home2.html)
 
 ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) ![Spline](https://img.shields.io/badge/-Spline-000000?style=flat-square&logo=spline&logoColor=white) ![n8n](https://img.shields.io/badge/-n8n-FF6560?style=flat-square&logo=n8n&logoColor=white) ![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white)
 
